@@ -6,15 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fondologin"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="inicio"
+        android:text="INICIAR SESIÓN"
+        android:textColor="#75CBD5"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintVertical_bias="0.168" />
+
+    <EditText
+        android:id="@+id/txtCorreo"
+        android:layout_width="305dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Correo electrónico"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <EditText
+        android:id="@+id/txtContrasena"
+        android:layout_width="307dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="271dp" />
+
+    <Button
+        android:id="@+id/btnEntrar"
+        android:layout_width="133dp"
+        android:layout_height="34dp"
+        android:background="#75CBD5"
+        android:text="Entrar"
+        android:textColor="#FFFEFE"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="337dp" />
+
+    <TextView
+        android:layout_width="246dp"
+        android:layout_height="25dp"
+        android:text="*Si aún no cuenta con un usuario, favor de registrarse."
+        android:textColor="#656060"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="425dp" />
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="133dp"
+        android:layout_height="34dp"
+        android:background="#75CBD5"
+        android:text="Registrarse"
+        android:textColor="#FFFEFE"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="450dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
