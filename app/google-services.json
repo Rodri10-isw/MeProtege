@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "880436097892",
+    "firebase_url": "https://meprotege-610fa.firebaseio.com",
+    "project_id": "meprotege-610fa",
+    "storage_bucket": "meprotege-610fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880436097892:android:bc329c5bd4d3f6eac88071",
+        "android_client_info": {
+          "package_name": "com.nextimpulse.meprotege"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880436097892-pqnvusmhmc997ieadcft8tp6qh2in2fr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS96HSBdkJaS-5AaG1HO-RtCoXKtSj2Ac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880436097892-pqnvusmhmc997ieadcft8tp6qh2in2fr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
