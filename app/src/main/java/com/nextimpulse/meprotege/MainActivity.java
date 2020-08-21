@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,Registro.class));
+                startActivity(new Intent(MainActivity.this,FormularioClientes.class));
             }
         });
         btnEn.setOnClickListener(new View.OnClickListener() {

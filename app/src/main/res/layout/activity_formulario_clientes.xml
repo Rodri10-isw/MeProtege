@@ -207,7 +207,7 @@
         app:layout_constraintVertical_bias="0.568" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnRegistro"
         android:layout_width="413dp"
         android:layout_height="72dp"
         android:background="@drawable/borde"
