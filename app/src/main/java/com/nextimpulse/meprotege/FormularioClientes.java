@@ -34,8 +34,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class FormularioClientes extends AppCompatActivity {
-    private ImageView tvFotoP,btnFoto,btnComp,btnine,btnext;
+    private CircleImageView tvFotoP;
+    private ImageView btnFoto,btnComp,btnine,btnext;
     private ImageButton imageButton;
     private EditText email,pass;
     private EditText eNombre,eApellido,eDir,eNoC,eNoT;
@@ -49,6 +52,7 @@ public class FormularioClientes extends AppCompatActivity {
     private Uri mImageCOM;
     private Uri mImageEXT;
     private Uri ruta;
+    private int p=0,i=0,c=0,e=0;
 
     String rutafinal;
 
@@ -76,7 +80,7 @@ public class FormularioClientes extends AppCompatActivity {
         btnComp=(ImageView)findViewById(R.id.btnComprobanteDomicilio);
         btnine=(ImageView)findViewById(R.id.btnINEoLicencia);
         btnext=(ImageView)findViewById(R.id.btnFotodeFachada);
-        tvFotoP=(ImageView)findViewById(R.id.tvFotografia);
+        tvFotoP=(CircleImageView)findViewById(R.id.profile_image);
 
         btnext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,12 +122,10 @@ public class FormularioClientes extends AppCompatActivity {
                         !noCel.isEmpty()&&
                         !noTel.isEmpty())
                 {
-                    if (contra.length() > 6&&mImageUri==null){
+
+                    if (contra.length() > 6){
                         registroUsuario();
-                        subirfoto();
-                        //subirfotoINE();
-                       // subirfotoCOM();
-                        //subirfotoEXT();
+
                     }else{
                         Toast.makeText(FormularioClientes.this, "La contraseña debe de tener minimo 6 digitos",Toast.LENGTH_SHORT).show();
                     }
@@ -136,40 +138,49 @@ public class FormularioClientes extends AppCompatActivity {
         });
     }
     private void  registroUsuario(){
-        mAuth.createUserWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    int alt=1;
-                    alt=funcional(1);
-                    Map<String,Object> map=new HashMap<>();
-                    map.put("correo",correo);
-                    map.put("pass",contra);
-                    map.put("folio",alt);
-                    map.put("nombre",nombre);
-                    map.put("apellido",apellido);
-                    map.put("direccion",direccion);
-                    map.put("no Celular",noCel);
-                    map.put("no Telefono",noTel);
-                    String id=mAuth.getCurrentUser().getUid();
-                    mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task2) {
-                            if (task2.isSuccessful()){
-                                Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(FormularioClientes.this,MainActivity.class));
-                                finish();
-                            }else{
-                                Toast.makeText(FormularioClientes.this, "No se pudo crear al usuario",Toast.LENGTH_SHORT).show();
+        if (p==0 || c==0 || e==0 || i==0){
+           Toast.makeText(FormularioClientes.this, "Sube los archivos correspondientes",Toast.LENGTH_SHORT).show();
+        }else{
+            subirfoto();
+            subirfotoINE();
+            subirfotoCOM();
+            subirfotoEXT();
+            mAuth.createUserWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        int alt=1;
+                        alt=funcional(1);
+                        Map<String,Object> map=new HashMap<>();
+                        map.put("correo",correo);
+                        map.put("pass",contra);
+                        map.put("folio",alt);
+                        map.put("nombre",nombre);
+                        map.put("apellido",apellido);
+                        map.put("direccion",direccion);
+                        map.put("no Celular",noCel);
+                        map.put("no Telefono",noTel);
+                        String id=mAuth.getCurrentUser().getUid();
+                        mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task2) {
+                                if (task2.isSuccessful()){
+                                    Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(FormularioClientes.this,MainActivity.class));
+                                    finish();
+                                }else{
+                                    Toast.makeText(FormularioClientes.this, "No se pudo crear",Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
 
-                }else{
-                    Toast.makeText(FormularioClientes.this, "No se pudo registrar usuario",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(FormularioClientes.this, "Usuario Existente",Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
     //Folio aleatorio//
     public static int funcional(int alt){
@@ -182,9 +193,6 @@ public class FormularioClientes extends AppCompatActivity {
         return alt;
     }
     private void subirfoto(){
-        if (mImageUri==null){
-            Toast.makeText(FormularioClientes.this, "INGRESA FOTO DE PERFIL",Toast.LENGTH_SHORT).show();
-        }else{
             final StorageReference filePath=mStorageRef.child("Fotos").child(correo).child("Perfil").child(mImageUri.getLastPathSegment());
             filePath.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
@@ -214,8 +222,6 @@ public class FormularioClientes extends AppCompatActivity {
 
                 }
             });
-        }
-
     }
     private void subirfotoINE(){
         final StorageReference filePath=mStorageRef.child("Fotos").child(correo).child("INE").child(mImageINE.getLastPathSegment());
@@ -326,6 +332,7 @@ public class FormularioClientes extends AppCompatActivity {
                 Toast.makeText(FormularioClientes.this, "Error mientras se crear el archivo", Toast.LENGTH_SHORT).show();
             }
             if (photoFile !=null){
+                p=1;
                 mImageUri = FileProvider.getUriForFile(this,"com.nextimpulse.android.fileprovider",photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,mImageUri);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -344,6 +351,7 @@ public class FormularioClientes extends AppCompatActivity {
                 Toast.makeText(FormularioClientes.this, "Error mientras se crear el archivo", Toast.LENGTH_SHORT).show();
             }
             if (photoFileINE !=null){
+                i=1;
                 mImageINE =FileProvider.getUriForFile(this,"com.nextimpulse.android.fileprovider",photoFileINE);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,mImageINE);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -361,6 +369,7 @@ public class FormularioClientes extends AppCompatActivity {
                 Toast.makeText(FormularioClientes.this, "Error mientras se crear el archivo", Toast.LENGTH_SHORT).show();
             }
             if (photoFileINE !=null){
+                c=1;
                 mImageCOM =FileProvider.getUriForFile(this,"com.nextimpulse.android.fileprovider",photoFileINE);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,mImageCOM);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -378,6 +387,7 @@ public class FormularioClientes extends AppCompatActivity {
                 Toast.makeText(FormularioClientes.this, "Error mientras se crear el archivo", Toast.LENGTH_SHORT).show();
             }
             if (photoFileINE !=null){
+                e=1;
                 mImageEXT =FileProvider.getUriForFile(this,"com.nextimpulse.android.fileprovider",photoFileINE);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,mImageEXT);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
