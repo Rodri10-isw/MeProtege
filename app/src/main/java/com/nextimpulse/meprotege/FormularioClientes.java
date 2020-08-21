@@ -21,7 +21,6 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -69,7 +68,7 @@ public class FormularioClientes extends AppCompatActivity {
         pass=(EditText)findViewById(R.id.edtContraseña);
         eNombre=(EditText)findViewById(R.id.edtNombre);
         eApellido=(EditText)findViewById(R.id.edtApellidos);
-        eDir=(EditText)findViewById(R.id.edtDomiciliodelNegocio);
+        eDir=(EditText)findViewById(R.id.edtNoLicenciadeConducir);
         eNoC=(EditText)findViewById(R.id.edtCelular);
         eNoT=(EditText)findViewById(R.id.edtTelefonoFijo);
         btn1=(Button)findViewById(R.id.btnRegistro);
