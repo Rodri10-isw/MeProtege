@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CatalogoProductos">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="104dp"
+        android:layout_height="133dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logooficial" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/tvPerfil"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/fondofotografia"
+        app:civ_border_color="#6FC7D3"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <TextView
+        android:id="@+id/txtUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="228dp"
+        android:layout_marginLeft="228dp"
+        android:textColor="#353232"
+        app:layout_constraintBottom_toTopOf="@+id/idUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="No. Cliente:"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/idUser"
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido:"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/txtUsuario"
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868" />
+
+    <TextView
+        android:id="@+id/idUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="228dp"
+        android:layout_marginLeft="228dp"
+        android:layout_marginTop="72dp"
+        android:textColor="#353232"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnPedido"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="4dp"
+        android:background="#1582CC"
+        android:text="HAZ TU PEDIDO AQUÍ"
+        android:textColor="#FBFBFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnChat"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnChat"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="4dp"
+        android:background="#309F17"
+        android:text="¿NECESITAS AYUDA?"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar sesión"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="174dp"
+        android:layout_height="161dp"
+        app:srcCompat="@drawable/tricapa"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="312dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="202dp"
+        android:layout_height="177dp"
+        app:srcCompat="@drawable/infantil"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="473dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="178dp"
+        android:layout_height="172dp"
+        app:srcCompat="@drawable/nk"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="191dp"
+        android:layout_height="175dp"
+        app:srcCompat="@drawable/grisuno"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="191dp"
+        android:layout_height="181dp"
+        app:srcCompat="@drawable/grisdos"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="305dp" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="192dp"
+        android:layout_height="187dp"
+        app:srcCompat="@drawable/grisdos"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="468dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="116dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/botoncompra"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="263dp" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="116dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/botoncompra"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="603dp" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="116dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/botoncompra"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="435dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
