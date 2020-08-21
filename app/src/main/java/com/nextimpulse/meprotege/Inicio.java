@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Inicio extends AppCompatActivity {
-    private TextView txtName,txtId;
+    private TextView txtName,txtId,btncerr;
     private ImageView tvPerfil;
     private Button agregar;
     private FirebaseAuth mAut;
@@ -36,7 +36,17 @@ public class Inicio extends AppCompatActivity {
         txtId=(TextView)findViewById(R.id.idUser);
         tvPerfil=(ImageView)findViewById(R.id.tvPerfil);
         agregar=(Button)findViewById(R.id.btnPedido);
+        btncerr=(TextView)findViewById(R.id.btnCerrar);
+
         obtenerDatosUsr();
+        btncerr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAut.signOut();
+                startActivity(new Intent(Inicio.this,MainActivity.class));
+                finish();
+            }
+        });
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +54,7 @@ public class Inicio extends AppCompatActivity {
             }
         });
     }
+
     private void obtenerDatosUsr(){
         String id = mAut.getCurrentUser().getUid();
         mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
@@ -62,9 +73,7 @@ public class Inicio extends AppCompatActivity {
                             .load(url)
                             .into(tvPerfil);
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

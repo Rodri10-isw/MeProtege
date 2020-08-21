@@ -141,14 +141,12 @@ public class FormularioClientes extends AppCompatActivity {
         if (p==0 || c==0 || e==0 || i==0){
            Toast.makeText(FormularioClientes.this, "Sube los archivos correspondientes",Toast.LENGTH_SHORT).show();
         }else{
-            subirfoto();
-            subirfotoINE();
-            subirfotoCOM();
-            subirfotoEXT();
+
             mAuth.createUserWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+
                         int alt=1;
                         alt=funcional(1);
                         Map<String,Object> map=new HashMap<>();
@@ -165,6 +163,10 @@ public class FormularioClientes extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task2) {
                                 if (task2.isSuccessful()){
+                                    subirfoto();
+                                    subirfotoINE();
+                                    subirfotoCOM();
+                                    subirfotoEXT();
                                     Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(FormularioClientes.this,MainActivity.class));
                                     finish();
