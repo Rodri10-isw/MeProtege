@@ -7,7 +7,7 @@
     tools:context=".detallesdepedido">
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/tvLogo"
         android:layout_width="132dp"
         android:layout_height="163dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,19 +97,19 @@
         app:layout_constraintVertical_bias="0.027" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCambiarMetodoPago"
         android:layout_width="190dp"
         android:layout_height="37dp"
         android:background="#16B11C"
         android:text="Cambiar método de pago"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="497dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnVolverAlCatalogo"
         android:layout_width="165dp"
         android:layout_height="38dp"
         android:background="#18B61F"
@@ -121,7 +121,7 @@
         tools:layout_editor_absoluteY="497dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnAceptaryEnviar"
         android:layout_width="149dp"
         android:layout_height="41dp"
         android:background="#00BCD4"
@@ -135,7 +135,7 @@
         app:layout_constraintVertical_bias="0.87" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/txtDetallesdelProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detalles del Producto"
