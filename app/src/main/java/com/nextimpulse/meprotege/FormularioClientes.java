@@ -124,8 +124,27 @@ public class FormularioClientes extends AppCompatActivity {
                 {
 
                     if (contra.length() > 6){
-                        registroUsuario();
-
+                        if (p==0 || c==0 || e==0 || i==0){
+                            Toast.makeText(FormularioClientes.this, "Sube los archivos correspondientes",Toast.LENGTH_SHORT).show();
+                        }else{
+                            registroUsuario();
+                                mAuth.signInWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()){
+                                            subirfoto();
+                                            subirfotoINE();
+                                            subirfotoCOM();
+                                            subirfotoEXT();
+                                            startActivity(new Intent(FormularioClientes.this,MainActivity.class));
+                                            finish();
+                                        }else{
+                                            Toast.makeText(FormularioClientes.this, "Archivos no cargados",Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            //mAuth.signOut();
+                        }
                     }else{
                         Toast.makeText(FormularioClientes.this, "La contraseña debe de tener minimo 6 digitos",Toast.LENGTH_SHORT).show();
                     }
@@ -138,15 +157,10 @@ public class FormularioClientes extends AppCompatActivity {
         });
     }
     private void  registroUsuario(){
-        if (p==0 || c==0 || e==0 || i==0){
-           Toast.makeText(FormularioClientes.this, "Sube los archivos correspondientes",Toast.LENGTH_SHORT).show();
-        }else{
-
             mAuth.createUserWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-
+                public void onComplete(@NonNull Task<AuthResult> task1) {
+                    if(task1.isSuccessful()){
                         int alt=1;
                         alt=funcional(1);
                         Map<String,Object> map=new HashMap<>();
@@ -163,15 +177,9 @@ public class FormularioClientes extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task2) {
                                 if (task2.isSuccessful()){
-                                    subirfoto();
-                                    subirfotoINE();
-                                    subirfotoCOM();
-                                    subirfotoEXT();
                                     Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(FormularioClientes.this,MainActivity.class));
-                                    finish();
                                 }else{
-                                    Toast.makeText(FormularioClientes.this, "No se pudo crear",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(FormularioClientes.this, "Usuario no creado",Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -181,15 +189,14 @@ public class FormularioClientes extends AppCompatActivity {
                     }
                 }
             });
-        }
-
     }
+
     //Folio aleatorio//
     public static int funcional(int alt){
         int n2;
         Random num =new Random();
-        alt=1+num.nextInt(500);
-        n2=1+num.nextInt(500);
+        alt=1+num.nextInt(5000);
+        n2=1+num.nextInt(5000);
         System.out.println(alt);
 
         return alt;
@@ -214,9 +221,7 @@ public class FormularioClientes extends AppCompatActivity {
                     mDatabase.child("Users").child(id).child("ImgPerfil").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
-                            if (task2.isSuccessful()){
-                                finish();
-                            }else{
+                            if (!task2.isSuccessful()){
                                 Toast.makeText(FormularioClientes.this, "Error al cargar foto",Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -246,10 +251,7 @@ public class FormularioClientes extends AppCompatActivity {
                 mDatabase.child("Users").child(id).child("ImgINE").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task2) {
-                        if (task2.isSuccessful()){
-
-                            finish();
-                        }else{
+                        if (!task2.isSuccessful()){
                             Toast.makeText(FormularioClientes.this, "Error al cargar foto",Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -279,10 +281,7 @@ public class FormularioClientes extends AppCompatActivity {
                 mDatabase.child("Users").child(id).child("ImgCom").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task2) {
-                        if (task2.isSuccessful()){
-
-                            finish();
-                        }else{
+                        if (!task2.isSuccessful()){
                             Toast.makeText(FormularioClientes.this, "Error al cargar foto",Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -312,10 +311,7 @@ public class FormularioClientes extends AppCompatActivity {
                 mDatabase.child("Users").child(id).child("ImgExt").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task2) {
-                        if (task2.isSuccessful()){
-
-                            finish();
-                        }else{
+                        if (!task2.isSuccessful()){
                             Toast.makeText(FormularioClientes.this, "Error al cargar foto",Toast.LENGTH_SHORT).show();
                         }
                     }
