@@ -141,7 +141,7 @@
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="191dp"
-        android:layout_height="175dp"
+        android:layout_height="172dp"
         app:srcCompat="@drawable/grisuno"
         tools:layout_editor_absoluteX="198dp"
         tools:layout_editor_absoluteY="133dp" />
