@@ -8,12 +8,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="104dp"
-        android:layout_height="133dp"
+        android:layout_width="106dp"
+        android:layout_height="114dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintHorizontal_bias="0.996"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logooficial" />
+        app:srcCompat="@drawable/logooficial"
+        tools:layout_editor_absoluteY="-6dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/tvPerfil"
@@ -115,75 +116,113 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="174dp"
-        android:layout_height="161dp"
-        app:srcCompat="@drawable/tricapa"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="312dp" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="202dp"
-        android:layout_height="177dp"
-        app:srcCompat="@drawable/infantil"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="473dp" />
-
-    <ImageView
         android:id="@+id/imageView6"
         android:layout_width="178dp"
         android:layout_height="172dp"
-        app:srcCompat="@drawable/nk"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="133dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225"
+        app:srcCompat="@drawable/nk" />
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="191dp"
+        android:id="@+id/imageView3"
+        android:layout_width="178dp"
         android:layout_height="172dp"
-        app:srcCompat="@drawable/grisuno"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="133dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.388"
+        app:srcCompat="@drawable/tricapa" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="191dp"
-        android:layout_height="181dp"
-        app:srcCompat="@drawable/grisdos"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="305dp" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="192dp"
-        android:layout_height="187dp"
-        app:srcCompat="@drawable/grisdos"
-        tools:layout_editor_absoluteX="198dp"
-        tools:layout_editor_absoluteY="468dp" />
+        android:id="@+id/imageView5"
+        android:layout_width="178dp"
+        android:layout_height="172dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.872"
+        app:srcCompat="@drawable/infantil" />
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="116dp"
         android:layout_height="33dp"
-        app:srcCompat="@drawable/botoncompra"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="263dp" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="116dp"
-        android:layout_height="33dp"
-        app:srcCompat="@drawable/botoncompra"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="603dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.649"
+        app:srcCompat="@drawable/botoncompra" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="116dp"
         android:layout_height="33dp"
-        app:srcCompat="@drawable/botoncompra"
-        tools:layout_editor_absoluteX="262dp"
-        tools:layout_editor_absoluteY="435dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.631"
+        app:srcCompat="@drawable/botoncompra" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="116dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.837"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/botoncompra" />
+
+    <Spinner
+        android:id="@+id/spKn95"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.799"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.216" />
+
+    <EditText
+        android:id="@+id/edtCanKN"
+        android:layout_width="186dp"
+        android:layout_height="46dp"
+        android:ems="10"
+        android:hint="Cantidad de empaque"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:text="Numero de piezas por empaque"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
