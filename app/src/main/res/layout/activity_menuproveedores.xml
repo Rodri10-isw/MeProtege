@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".menuproveedores">
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="151dp"
+        android:layout_height="208dp"
+        app:srcCompat="@drawable/logooficial"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="-51dp" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="116dp"
+        android:layout_height="117dp"
+        app:srcCompat="@drawable/fondofotografiasinaro"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="23dp"
+        android:layout_height="17dp"
+        app:srcCompat="@drawable/iconocamara"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="109dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="75dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No. de proveedor: 000515521"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="94dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="103dp"
+        android:layout_height="43dp"
+        android:background="#34C5DF"
+        android:text="Mensajes"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="138dp"
+        android:layout_height="43dp"
+        android:background="#00BCD4"
+        android:text="Notificaciones"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="88dp"
+        android:layout_height="43dp"
+        android:background="#00BCD4"
+        android:text="Clientes"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PEDIDOS VIGENTES"
+        android:textColor="#202020"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="195dp" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="393dp"
+        android:layout_height="321dp"
+        app:srcCompat="@drawable/chart"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="205dp" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="395dp"
+        android:layout_height="188dp"
+        app:srcCompat="@drawable/chartdos"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="515dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

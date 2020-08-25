@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".detallesdepedido"></activity>
+        <activity android:name=".menuproveedores"></activity>
+        <activity android:name=".detallesdepedido" />
         <activity android:name=".CatalogoProductos" />
         <activity android:name=".FormularioProveedores" />
         <activity android:name=".FormularioClientes" />
