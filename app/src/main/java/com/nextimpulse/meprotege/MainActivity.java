@@ -76,35 +76,70 @@ public class MainActivity extends AppCompatActivity {
     private void obtenerDatosUsr(){
         String id = mAuth.getCurrentUser().getUid();
         mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    String tipo=dataSnapshot.child("tipo").getValue().toString();
-                    if (tipo.equals("1")){
-                        Toast.makeText(MainActivity.this, "No te mamas "+tipo,Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this,Inicio.class));
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            if (dataSnapshot.exists()){
+                String tipo=dataSnapshot.child("tipo").getValue().toString();
+                String nombre=dataSnapshot.child("nombre").getValue().toString();
+                if (tipo.equals("client")){
+                    Toast.makeText(MainActivity.this, "Bienvenido "+nombre,Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,Inicio.class));
+                    finish();
+                }else{
+                    if (tipo.equals("delivery")){
+                        Toast.makeText(MainActivity.this, "Bienvenido "+nombre,Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this,menuproveedores.class));
                         finish();
                     }else{
-                        if (tipo.equals("repartidor"))
-                        Toast.makeText(MainActivity.this, "Te mamas "+tipo,Toast.LENGTH_SHORT).show();
+                        if (tipo.equals("admin")){
+                            Toast.makeText(MainActivity.this, "Bienvenido "+nombre,Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this,menuAdministrador.class));
+                            finish();
+                        }
                     }
 
-                    //startActivity(new Intent(MainActivity.this,Inicio.class));
-                    //
                 }
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        }
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-    }
+        }
+    });
+}
     @Override
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser()!=null){
-            startActivity(new Intent(MainActivity.this,Inicio.class));
-            finish();
+            String id = mAuth.getCurrentUser().getUid();
+            mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
+                        String tipo=dataSnapshot.child("tipo").getValue().toString();
+                        if (tipo.equals("client")){
+                            startActivity(new Intent(MainActivity.this,Inicio.class));
+                            finish();
+                        }else{
+                            if (tipo.equals("delivery")){
+                                startActivity(new Intent(MainActivity.this,menuproveedores.class));
+                                finish();
+                            }else{
+                                if (tipo.equals("admin")){
+                                    startActivity(new Intent(MainActivity.this,menuAdministrador.class));
+                                    finish();
+                                }
+                            }
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            //startActivity(new Intent(MainActivity.this,Inicio.class));
+            //finish();
         }
     }
 }
