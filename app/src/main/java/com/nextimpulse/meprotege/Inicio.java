@@ -50,7 +50,7 @@ public class Inicio extends AppCompatActivity {
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Inicio.this,Pedidos.class));
+                startActivity(new Intent(Inicio.this,CatalogoProductos.class));
             }
         });
     }
