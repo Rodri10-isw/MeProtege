@@ -7,7 +7,7 @@
     tools:context=".menuproveedores">
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/tvLogo"
         android:layout_width="151dp"
         android:layout_height="208dp"
         app:srcCompat="@drawable/logooficial"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="-51dp" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/tvFoto"
         android:layout_width="116dp"
         android:layout_height="117dp"
         app:srcCompat="@drawable/fondofotografiasinaro"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/tvCamara"
         android:layout_width="23dp"
         android:layout_height="17dp"
         app:srcCompat="@drawable/iconocamara"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="109dp" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/txtNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre:"
@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteY="75dp" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/txtNoProveedor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No. de proveedor: 000515521"
@@ -47,7 +47,7 @@
         tools:layout_editor_absoluteY="94dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnMensajes"
         android:layout_width="103dp"
         android:layout_height="43dp"
         android:background="#34C5DF"
@@ -57,7 +57,7 @@
         tools:layout_editor_absoluteY="141dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnNotificaciones"
         android:layout_width="138dp"
         android:layout_height="43dp"
         android:background="#00BCD4"
@@ -67,7 +67,7 @@
         tools:layout_editor_absoluteY="141dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnClientes"
         android:layout_width="88dp"
         android:layout_height="43dp"
         android:background="#00BCD4"
@@ -76,17 +76,8 @@
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="141dp" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PEDIDOS VIGENTES"
-        android:textColor="#202020"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="195dp" />
-
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/tvEjemplo"
         android:layout_width="393dp"
         android:layout_height="321dp"
         app:srcCompat="@drawable/chart"
@@ -94,10 +85,29 @@
         tools:layout_editor_absoluteY="205dp" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/tvEjemplodos"
         android:layout_width="395dp"
         android:layout_height="188dp"
         app:srcCompat="@drawable/chartdos"
         tools:layout_editor_absoluteX="11dp"
         tools:layout_editor_absoluteY="515dp" />
+
+    <TextView
+        android:id="@+id/txtPedidosVigentes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PEDIDOS VIGENTES"
+        android:textColor="#202020"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="195dp" />
+
+    <TextView
+        android:id="@+id/txtPedidosEntregados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PEDIDOS ENTREGADOS"
+        android:textColor="#202020"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="507dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
