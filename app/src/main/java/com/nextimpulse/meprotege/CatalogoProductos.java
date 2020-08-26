@@ -3,10 +3,6 @@ package com.nextimpulse.meprotege;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-<<<<<<< HEAD
-
-public class CatalogoProductos extends AppCompatActivity {
-=======
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class CatalogoProductos extends AppCompatActivity {
     private Spinner spinner1;
     private TextView Total;
@@ -25,15 +20,11 @@ public class CatalogoProductos extends AppCompatActivity {
     private String can="";
     private double canN=0;
     private int v1=0;
->>>>>>> ccb91c61b4fc4e2c081ee0bee2691b22482000c9
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogo_productos);
-<<<<<<< HEAD
-    }
-=======
 
         spinner1 =(Spinner)findViewById(R.id.spKn95);
         Total=(TextView)findViewById(R.id.tvTotal);
@@ -41,9 +32,7 @@ public class CatalogoProductos extends AppCompatActivity {
         can=cantidad.getText().toString();
         String [] opciones = {"1","3","5","10"};
         ArrayAdapter<String> ada = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,opciones);
-    ///KN Blanco
         spinner1.setAdapter(ada);
-
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override public void onItemSelected(AdapterView parentView, View selectedItemView, int position, long id) {
                 String seleccion=spinner1.getSelectedItem().toString();
@@ -123,5 +112,5 @@ public class CatalogoProductos extends AppCompatActivity {
 
     }
 
->>>>>>> ccb91c61b4fc4e2c081ee0bee2691b22482000c9
+
 }
