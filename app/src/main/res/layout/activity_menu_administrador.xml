@@ -6,6 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".menuAdministrador">
 
+    <Button
+        android:id="@+id/btnMensajes"
+        android:layout_width="82dp"
+        android:layout_height="44dp"
+        android:background="#34C5DF"
+        android:text="Mensajes"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="199dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <Button
+        android:id="@+id/btnNotificaciones"
+        android:layout_width="112dp"
+        android:layout_height="43dp"
+        android:background="#00BCD4"
+        android:text="Notificaciones"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="293dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <Button
+        android:id="@+id/btnProveedores"
+        android:layout_width="101dp"
+        android:layout_height="42dp"
+        android:background="#00BCD4"
+        android:text="Proveedores"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <Button
+        android:id="@+id/btnClientes"
+        android:layout_width="77dp"
+        android:layout_height="43dp"
+        android:background="#00BCD4"
+        android:text="Clientes"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="141dp" />
+
     <ImageView
         android:id="@+id/tvLogo2"
         android:layout_width="151dp"
@@ -45,4 +85,37 @@
         android:text="No. de Administrador: 000515521"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="94dp" />
+
+    <TextView
+        android:id="@+id/textPedidosVigentes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PEDIDOS VIGENTES"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="198dp" />
+
+    <ImageView
+        android:id="@+id/tvTablaEntregados"
+        android:layout_width="406dp"
+        android:layout_height="215dp"
+        app:srcCompat="@drawable/tablados"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="507dp" />
+
+    <ImageView
+        android:id="@+id/tvTablaVigentes"
+        android:layout_width="410dp"
+        android:layout_height="280dp"
+        app:srcCompat="@drawable/tablauno"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="217dp" />
+
+    <TextView
+        android:id="@+id/txtPedidosEntregados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PEDIDOS ENTREGADOS"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="488dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
