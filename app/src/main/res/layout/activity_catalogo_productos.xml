@@ -151,7 +151,7 @@
         app:srcCompat="@drawable/infantil" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/btnAgregarCarritoKN"
         android:layout_width="116dp"
         android:layout_height="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -387,8 +387,8 @@
         app:layout_constraintEnd_toStartOf="@+id/edtCanKN"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPedidosVigentes"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.805" />
 
     <TextView
         android:id="@+id/textView21"
@@ -399,8 +399,8 @@
         app:layout_constraintEnd_toStartOf="@+id/edtCanKN"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPedidosVigentes"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
 
     <TextView
         android:id="@+id/textView24"
@@ -409,10 +409,10 @@
         android:text="Cantidad de empaque"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/edtCanKN"
-        app:layout_constraintHorizontal_bias="0.986"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPedidosVigentes"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.31" />
 
     <View
         android:id="@+id/divider"

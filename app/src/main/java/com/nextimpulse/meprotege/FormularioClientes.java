@@ -45,6 +45,7 @@ public class FormularioClientes extends AppCompatActivity {
     private Button btn1;
     //variables a guardar
     private String correo="", contra="";
+    private String tipo="client";
     private String nombre="", apellido="",direccion="",noCel="",noTel="";
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private Uri mImageUri;
@@ -122,31 +123,12 @@ public class FormularioClientes extends AppCompatActivity {
                         !noCel.isEmpty()&&
                         !noTel.isEmpty())
                 {
-
                     if (contra.length() > 6){
                         if (p==0 || c==0 || e==0 || i==0){
                             Toast.makeText(FormularioClientes.this, "Sube los archivos correspondientes",Toast.LENGTH_SHORT).show();
                         }else{
                             registroUsuario();
-                                mAuth.signInWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task5) {
-                                        if (task5.isSuccessful()){
-                                            subirfoto();
-                                            subirfotoINE();
-                                            subirfotoCOM();
-                                            subirfotoEXT();
-                                        }else{
-                                            Toast.makeText(FormularioClientes.this, "Archivos no cargados",Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-                            //startActivity(new Intent(FormularioClientes.this,MainActivity.class));
-                            //finish();
                         }
-
-
                     }else{
                         Toast.makeText(FormularioClientes.this, "La contraseña debe de tener minimo 6 digitos",Toast.LENGTH_SHORT).show();
                     }
@@ -174,12 +156,27 @@ public class FormularioClientes extends AppCompatActivity {
                         map.put("direccion",direccion);
                         map.put("no Celular",noCel);
                         map.put("no Telefono",noTel);
+                        map.put("tipo",tipo);
                         String id=mAuth.getCurrentUser().getUid();
                         mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task2) {
                                 if (task2.isSuccessful()){
-                                    Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
+                                    mAuth.signInWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task5) {
+                                            if (task5.isSuccessful()){
+                                                subirfoto();
+                                                subirfotoINE();
+                                                subirfotoCOM();
+                                                subirfotoEXT();
+                                                Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
+                                            }else{
+                                                Toast.makeText(FormularioClientes.this, "Archivos no cargados",Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
                                 }else{
                                     Toast.makeText(FormularioClientes.this, "No se pudo crear",Toast.LENGTH_SHORT).show();
                                 }
