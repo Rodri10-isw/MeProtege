@@ -35,7 +35,7 @@ public class Inicio extends AppCompatActivity {
         txtName=(TextView)findViewById(R.id.txtUsuario);
         txtId=(TextView)findViewById(R.id.idUser);
         tvPerfil=(ImageView)findViewById(R.id.tvPerfil);
-        agregar=(Button)findViewById(R.id.btnPedido);
+        agregar=(Button)findViewById(R.id.btnCarrito);
         btncerr=(TextView)findViewById(R.id.btnCerrar);
 
         obtenerDatosUsr();
