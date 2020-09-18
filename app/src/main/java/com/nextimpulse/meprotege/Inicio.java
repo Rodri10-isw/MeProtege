@@ -3,12 +3,16 @@ package com.nextimpulse.meprotege;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,23 +24,28 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Inicio extends AppCompatActivity {
     private TextView txtName,txtId,btncerr;
+    private ProgressDialog progreso;
     private ImageView tvPerfil;
-    private Button agregar;
+    private Button agregar,p1;
     private FirebaseAuth mAut;
+    FirebaseDatabase miBase;
     private DatabaseReference mDatabase;
-    private String url;
+    private String url,id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+
         mAut=FirebaseAuth.getInstance();
-        mDatabase= FirebaseDatabase.getInstance().getReference();
+        miBase=FirebaseDatabase.getInstance();
+        mDatabase= miBase.getReference();
 
         txtName=(TextView)findViewById(R.id.txtUsuario);
         txtId=(TextView)findViewById(R.id.idUser);
         tvPerfil=(ImageView)findViewById(R.id.tvPerfil);
         agregar=(Button)findViewById(R.id.btnCarrito);
         btncerr=(TextView)findViewById(R.id.btnCerrar);
+        p1=(Button)findViewById(R.id.button);
 
         obtenerDatosUsr();
         btncerr.setOnClickListener(new View.OnClickListener() {
@@ -50,13 +59,15 @@ public class Inicio extends AppCompatActivity {
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Inicio.this,CatalogoProductos.class));
+                Intent interfaz3=new Intent(Inicio.this,CatalogoProductos.class);
+                interfaz3.putExtra("cliente",id);
+                startActivity(interfaz3);
             }
         });
     }
 
     private void obtenerDatosUsr(){
-        String id = mAut.getCurrentUser().getUid();
+        id = mAut.getCurrentUser().getUid();
         mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

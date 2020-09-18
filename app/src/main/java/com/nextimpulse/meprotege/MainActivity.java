@@ -64,7 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        obtenerDatosUsr();
+                        Toast.makeText(MainActivity.this, "Bienvenido",Toast.LENGTH_SHORT).show();
+                        Intent interfaz=new Intent(MainActivity.this,Inicio.class);
+                        startActivity(interfaz);
+                        finish();
                     }else{
                         Toast.makeText(MainActivity.this, "Correo o contraseña incorrectos",Toast.LENGTH_SHORT).show();
                     }
@@ -72,74 +75,12 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-
-    private void obtenerDatosUsr(){
-        String id = mAuth.getCurrentUser().getUid();
-        mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            if (dataSnapshot.exists()){
-                String tipo=dataSnapshot.child("tipo").getValue().toString();
-                String nombre=dataSnapshot.child("nombre").getValue().toString();
-                if (tipo.equals("client")){
-                    Toast.makeText(MainActivity.this, "Bienvenido "+nombre,Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this,Inicio.class));
-                    finish();
-                }else{
-                    if (tipo.equals("delivery")){
-                        Toast.makeText(MainActivity.this, "Bienvenido "+nombre,Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this,menuproveedores.class));
-                        finish();
-                    }else{
-                        if (tipo.equals("admin")){
-                            Toast.makeText(MainActivity.this, "Bienvenido "+nombre,Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this,menuAdministrador.class));
-                            finish();
-                        }
-                    }
-
-                }
-            }
-        }
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    });
-}
     @Override
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser()!=null){
-            String id = mAuth.getCurrentUser().getUid();
-            mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()){
-                        String tipo=dataSnapshot.child("tipo").getValue().toString();
-                        if (tipo.equals("client")){
-                            startActivity(new Intent(MainActivity.this,Inicio.class));
-                            finish();
-                        }else{
-                            if (tipo.equals("delivery")){
-                                startActivity(new Intent(MainActivity.this,menuproveedores.class));
-                                finish();
-                            }else{
-                                if (tipo.equals("admin")){
-                                    startActivity(new Intent(MainActivity.this,menuAdministrador.class));
-                                    finish();
-                                }
-                            }
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-            //startActivity(new Intent(MainActivity.this,Inicio.class));
-            //finish();
+            startActivity(new Intent(MainActivity.this,Inicio.class));
+            finish();
         }
     }
 }

@@ -5,10 +5,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -35,8 +39,11 @@ import java.util.Map;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import dmax.dialog.SpotsDialog;
 
 public class FormularioClientes extends AppCompatActivity {
+    AlertDialog mDialog;
+    private ProgressDialog progreso;
     private CircleImageView tvFotoP;
     private ImageView btnFoto,btnComp,btnine,btnext;
     private ImageButton imageButton;
@@ -47,7 +54,8 @@ public class FormularioClientes extends AppCompatActivity {
     private String correo="", contra="";
     private String tipo="client";
     private String nombre="", apellido="",direccion="",noCel="",noTel="";
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    final int REQUEST_IMAGE_CAPTURE = 1;
+    final int SELECCIONA=10;
     private Uri mImageUri;
     private Uri mImageINE;
     private Uri mImageCOM;
@@ -60,10 +68,16 @@ public class FormularioClientes extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     StorageReference mStorageRef;
+    private  String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_clientes);
+        mDialog= new SpotsDialog.Builder()
+                .setCancelable(false)
+                .setContext(this)
+                .setMessage("Guardando...")
+                .build();
         //iniciar firebase//
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
@@ -98,7 +112,7 @@ public class FormularioClientes extends AppCompatActivity {
         btnFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tomarFoto();
+                seleccionar();
             }
         });
         btnComp.setOnClickListener(new View.OnClickListener() {
@@ -118,26 +132,23 @@ public class FormularioClientes extends AppCompatActivity {
                 noCel=eNoC.getText().toString();
                 noTel=eNoT.getText().toString();
 
-                if (!correo.isEmpty() &&!contra.isEmpty() &&!nombre.isEmpty()&&!apellido.isEmpty()&&
-                        !direccion.isEmpty()&&
-                        !noCel.isEmpty()&&
-                        !noTel.isEmpty())
-                {
+                if (!correo.isEmpty() &&!contra.isEmpty() &&!nombre.isEmpty()&&!apellido.isEmpty()&& !direccion.isEmpty()&& !noCel.isEmpty()&& !noTel.isEmpty()) {
                     if (contra.length() > 6){
                         if (p==0 || c==0 || e==0 || i==0){
                             Toast.makeText(FormularioClientes.this, "Sube los archivos correspondientes",Toast.LENGTH_SHORT).show();
+                            }else{
+                                mDialog.show();
+                                registroUsuario();
+                                }
                         }else{
-                            registroUsuario();
+                            Toast.makeText(FormularioClientes.this, "La contraseña debe de tener minimo 6 digitos",Toast.LENGTH_SHORT).show();
                         }
-                    }else{
-                        Toast.makeText(FormularioClientes.this, "La contraseña debe de tener minimo 6 digitos",Toast.LENGTH_SHORT).show();
-                    }
-
                 }
                 else{
                     Toast.makeText(FormularioClientes.this, "Debe completar los campos",Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
     }
     private void  registroUsuario(){
@@ -157,32 +168,9 @@ public class FormularioClientes extends AppCompatActivity {
                         map.put("no Celular",noCel);
                         map.put("no Telefono",noTel);
                         map.put("tipo",tipo);
-                        String id=mAuth.getCurrentUser().getUid();
-                        mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task2) {
-                                if (task2.isSuccessful()){
-                                    mAuth.signInWithEmailAndPassword(correo,contra).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task5) {
-                                            if (task5.isSuccessful()){
-                                                subirfoto();
-                                                subirfotoINE();
-                                                subirfotoCOM();
-                                                subirfotoEXT();
-                                                Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
-                                            }else{
-                                                Toast.makeText(FormularioClientes.this, "Archivos no cargados",Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-
-                                }else{
-                                    Toast.makeText(FormularioClientes.this, "No se pudo crear",Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-
+                        id=mAuth.getCurrentUser().getUid();
+                        mDatabase.child("Users").child(id).setValue(map);
+                        subirfoto();
                     }else{
                         Toast.makeText(FormularioClientes.this, "Usuario Existente",Toast.LENGTH_SHORT).show();
                     }
@@ -200,7 +188,7 @@ public class FormularioClientes extends AppCompatActivity {
         return alt;
     }
     private void subirfoto(){
-            final StorageReference filePath=mStorageRef.child("Fotos").child(correo).child("Perfil").child(mImageUri.getLastPathSegment());
+            final StorageReference filePath=mStorageRef.child("Fotos").child(id).child("Perfil").child(mImageUri.getLastPathSegment());
             filePath.putFile(mImageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task1) throws Exception {
@@ -213,14 +201,14 @@ public class FormularioClientes extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task2) {
                     Uri link=task2.getResult();
-                    Map<String,Object> map=new HashMap<>();
-                    map.put("perfil",link.toString());
-                    String id=mAuth.getCurrentUser().getUid();
-                    mDatabase.child("Users").child(id).child("ImgPerfil").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    Map<String,Object> mapf1=new HashMap<>();
+                    mapf1.put("perfil",link.toString());
+                    //String id=mAuth.getCurrentUser().getUid();
+                    mDatabase.child("Users").child(id).child("ImgPerfil").setValue(mapf1).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()){
-                                //finish();
+                                subirfotoINE();
                             }else{
                                 Toast.makeText(FormularioClientes.this, "Error al cargar foto",Toast.LENGTH_SHORT).show();
                             }
@@ -231,28 +219,27 @@ public class FormularioClientes extends AppCompatActivity {
             });
     }
     private void subirfotoINE(){
-        final StorageReference filePath=mStorageRef.child("Fotos").child(correo).child("INE").child(mImageINE.getLastPathSegment());
+        final StorageReference filePath=mStorageRef.child("Fotos").child(id).child("INE").child(mImageINE.getLastPathSegment());
         filePath.putFile(mImageINE).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task1) throws Exception {
                 if (!task1.isSuccessful()){
                     throw new Exception();
                 }
-
                 return filePath.getDownloadUrl();
             }
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 Uri link=task.getResult();
-                Map<String,Object> map=new HashMap<>();
-                map.put("INE",link.toString());
-                String id=mAuth.getCurrentUser().getUid();
-                mDatabase.child("Users").child(id).child("ImgINE").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                Map<String,Object> mapf2=new HashMap<>();
+                mapf2.put("INE",link.toString());
+                //String id=mAuth.getCurrentUser().getUid();
+                mDatabase.child("Users").child(id).child("ImgINE").setValue(mapf2).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task2) {
                         if (task2.isSuccessful()){
-                            //finish();
+                            subirfotoCOM();
                         }else{
                             Toast.makeText(FormularioClientes.this, "Error al cargar foto",Toast.LENGTH_SHORT).show();
                         }
@@ -263,7 +250,7 @@ public class FormularioClientes extends AppCompatActivity {
         });
     }
     private void subirfotoCOM(){
-        final StorageReference filePath=mStorageRef.child("Fotos").child(correo).child("Comprobante").child(mImageCOM.getLastPathSegment());
+        final StorageReference filePath=mStorageRef.child("Fotos").child(id).child("Comprobante").child(mImageCOM.getLastPathSegment());
         filePath.putFile(mImageCOM).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task1) throws Exception {
@@ -277,14 +264,14 @@ public class FormularioClientes extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 Uri link=task.getResult();
-                Map<String,Object> map=new HashMap<>();
-                map.put("Comp",link.toString());
-                String id=mAuth.getCurrentUser().getUid();
-                mDatabase.child("Users").child(id).child("ImgCom").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                Map<String,Object> mapf3=new HashMap<>();
+                mapf3.put("Comp",link.toString());
+                //String id=mAuth.getCurrentUser().getUid();
+                mDatabase.child("Users").child(id).child("ImgCom").setValue(mapf3).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task2) {
                         if (task2.isSuccessful()){
-                            //finish();
+                            subirfotoEXT();
                         }else{
                             Toast.makeText(FormularioClientes.this, "Error al cargar foto",Toast.LENGTH_SHORT).show();
                         }
@@ -295,7 +282,7 @@ public class FormularioClientes extends AppCompatActivity {
         });
     }
     private void subirfotoEXT(){
-        final StorageReference filePath=mStorageRef.child("Fotos").child(correo).child("Exterior").child(mImageEXT.getLastPathSegment());
+        final StorageReference filePath=mStorageRef.child("Fotos").child(id).child("Exterior").child(mImageEXT.getLastPathSegment());
         filePath.putFile(mImageEXT).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task1) throws Exception {
@@ -309,13 +296,14 @@ public class FormularioClientes extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 Uri link=task.getResult();
-                Map<String,Object> map=new HashMap<>();
-                map.put("EXT",link.toString());
-                String id=mAuth.getCurrentUser().getUid();
-                mDatabase.child("Users").child(id).child("ImgExt").setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                Map<String,Object> mapf4=new HashMap<>();
+                mapf4.put("EXT",link.toString());
+                //String id=mAuth.getCurrentUser().getUid();
+                mDatabase.child("Users").child(id).child("ImgExt").setValue(mapf4).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task2) {
                         if (task2.isSuccessful()){
+                            Toast.makeText(FormularioClientes.this, "Usuario creado exitosamente",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(FormularioClientes.this,MainActivity.class));
                             finish();
                         }else{
@@ -327,6 +315,32 @@ public class FormularioClientes extends AppCompatActivity {
             }
         });
     }
+    public  void seleccionar(){
+        final CharSequence[] opciones={"Tomar Foto","Cargar Imagen","Cancelar"};
+        final AlertDialog.Builder alertaOpc=new AlertDialog.Builder(FormularioClientes.this);
+        alertaOpc.setTitle("Seleccione una Opcion");
+        alertaOpc.setItems(opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (opciones[i].equals("Tomar Foto")){
+                    tomarFoto();
+                }else
+                    if (opciones[i].equals("Cargar Imagen")){
+                        Intent intent=new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        intent.setType("image/");
+                        startActivityForResult(intent.createChooser(intent,"Seleccione la aplicacion"),SELECCIONA);
+
+                    }else{
+                        dialogInterface.dismiss();
+                    }
+            }
+        });
+        alertaOpc.show();
+
+    }
+
+
+
     public void tomarFoto(){
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -402,9 +416,9 @@ public class FormularioClientes extends AppCompatActivity {
     }
     String currentPhotoPath;
     private File createImageFile() throws IOException {
-        String nombreimagen= "IMG_" + eNombre.getText().toString()+"_";
+        String nombreimagen= "IMG_" + eNombre.getText().toString();
         File storageDir =getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image =File.createTempFile(nombreimagen, "jpg", storageDir);
+        File image =File.createTempFile(nombreimagen, ".jpg", storageDir);
         currentPhotoPath=image.getAbsolutePath();
         rutafinal=currentPhotoPath;
         return image;
@@ -412,8 +426,18 @@ public class FormularioClientes extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode,data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK ){
-            tvFotoP.setImageURI(mImageUri);
+        if ( resultCode == RESULT_OK ){
+            switch (requestCode){
+                case REQUEST_IMAGE_CAPTURE:
+                    tvFotoP.setImageURI(mImageUri);
+                    break;
+                case SELECCIONA:
+                    Uri path=data.getData();
+                    mImageUri=path;
+                    tvFotoP.setImageURI(path);
+                    break;
+            }
         }
     }
+
 }

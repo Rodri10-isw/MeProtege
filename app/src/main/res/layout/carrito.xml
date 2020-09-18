@@ -2,11 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="120dp"
     android:elevation="90dp"
-
-
-    android:layout_margin="8dp"
+    android:layout_margin="10dp"
     >
 
     <LinearLayout
@@ -14,15 +12,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/titulo1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="POST TITLE"
-            android:textColor="#000000"
-            android:background="#93DDF4"
-            android:gravity="center"
-            android:textSize="20dp"></TextView>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/titulo1"
+                android:layout_width="359dp"
+                android:layout_height="wrap_content"
+                android:background="#93DDF4"
+                android:gravity="center"
+                android:text="POST TITLE"
+                android:textColor="#000000"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:id="@+id/txteli"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#6AF344"
+                android:gravity="center"
+                android:text="X"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -31,7 +44,7 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="93dp">
 
                 <ImageView
                     android:id="@+id/tvFotoCarr"
@@ -63,6 +76,13 @@
                         android:text="Cantidad de empaques: "
                         android:textColor="#000000"
                         android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Color:"
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/textView15"
@@ -99,6 +119,13 @@
                             android:textSize="14dp"></TextView>
 
                         <TextView
+                            android:id="@+id/titulo5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="color"
+                            android:textColor="#000000" />
+
+                        <TextView
                             android:id="@+id/titulo4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -111,6 +138,7 @@
             </TableRow>
 
         </TableLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
