@@ -12,30 +12,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/titulo1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="#93DDF4"
+            android:gravity="center"
+            android:text="POST TITLE"
+            android:textColor="#000000"
+            android:textSize="20dp"></TextView>
 
-            <TextView
-                android:id="@+id/titulo1"
-                android:layout_width="359dp"
-                android:layout_height="wrap_content"
-                android:background="#93DDF4"
-                android:gravity="center"
-                android:text="POST TITLE"
-                android:textColor="#000000"
-                android:textSize="20dp"></TextView>
 
-            <TextView
-                android:id="@+id/txteli"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#6AF344"
-                android:gravity="center"
-                android:text="X"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -50,7 +38,7 @@
                     android:id="@+id/tvFotoCarr"
                     android:layout_width="112dp"
                     android:layout_height="88dp"
-                    app:srcCompat="@drawable/tricapa" />
+                    />
 
                 <Space
                     android:layout_width="10dp"

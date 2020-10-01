@@ -30,8 +30,8 @@
         <activity android:name=".menuproveedores" />
         <activity android:name=".detallesdepedido" />
         <activity android:name=".CatalogoProductos" />
-        <activity android:name=".FormularioProveedores" />
-        <activity android:name=".FormularioClientes" />
+        <activity android:name=".FormularioProveedores"></activity>
+        <activity android:name=".FormularioClientes"></activity>
         <activity android:name=".Pedidos" />
         <activity android:name=".Inicio" />
         <activity android:name=".Registro" />

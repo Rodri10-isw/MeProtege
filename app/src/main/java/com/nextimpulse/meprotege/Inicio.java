@@ -26,7 +26,7 @@ public class Inicio extends AppCompatActivity {
     private TextView txtName,txtId,btncerr;
     private ProgressDialog progreso;
     private ImageView tvPerfil;
-    private Button agregar,p1;
+    private Button agregar;
     private FirebaseAuth mAut;
     FirebaseDatabase miBase;
     private DatabaseReference mDatabase;
@@ -39,13 +39,12 @@ public class Inicio extends AppCompatActivity {
         mAut=FirebaseAuth.getInstance();
         miBase=FirebaseDatabase.getInstance();
         mDatabase= miBase.getReference();
-
+        mDatabase.keepSynced(true);
         txtName=(TextView)findViewById(R.id.txtUsuario);
         txtId=(TextView)findViewById(R.id.idUser);
         tvPerfil=(ImageView)findViewById(R.id.tvPerfil);
         agregar=(Button)findViewById(R.id.btnCarrito);
         btncerr=(TextView)findViewById(R.id.btnCerrar);
-        p1=(Button)findViewById(R.id.button);
 
         obtenerDatosUsr();
         btncerr.setOnClickListener(new View.OnClickListener() {

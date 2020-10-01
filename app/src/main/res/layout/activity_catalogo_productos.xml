@@ -114,22 +114,7 @@
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.237"
-        app:srcCompat="@drawable/nk" />
-
-    <TextView
-        android:id="@+id/txtPedidosEntregados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.237"/>
 
     <ImageView
         android:id="@+id/btnAgregarCarritoKN"
@@ -137,10 +122,10 @@
         android:layout_height="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.966"
+        app:layout_constraintHorizontal_bias="0.759"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.378"
+        app:layout_constraintVertical_bias="0.353"
         app:srcCompat="@drawable/botoncompra" />
 
     <TextView
@@ -209,14 +194,13 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="56dp"
-        android:background="@drawable/tricapa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/tvInf"
         android:layout_width="120dp"
         android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -224,8 +208,7 @@
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826"
-        app:srcCompat="@drawable/infantil" />
+        app:layout_constraintVertical_bias="0.826"/>
 
     <ImageView
         android:id="@+id/btnAgregarCarritoTCIn"
@@ -234,10 +217,10 @@
         android:layout_marginTop="124dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.966"
+        app:layout_constraintHorizontal_bias="0.759"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAgregarCarritoTC"
-        app:layout_constraintVertical_bias="0.195"
+        app:layout_constraintVertical_bias="0.11"
         app:srcCompat="@drawable/botoncompra" />
 
     <Spinner
@@ -320,77 +303,11 @@
         android:layout_height="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.966"
+        app:layout_constraintHorizontal_bias="0.759"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657"
+        app:layout_constraintVertical_bias="0.631"
         app:srcCompat="@drawable/botoncompra" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.643"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total:"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
-
-    <TextView
-        android:id="@+id/tvTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#3F51B5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtPedidosEntregados"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
-
-    <TextView
-        android:id="@+id/tvTotal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#3F51B5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.839"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <TextView
-        android:id="@+id/tvTotal4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#3F51B5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.839"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
 
     <TextView
         android:id="@+id/textView19"
@@ -486,14 +403,14 @@
             android:id="@+id/rbAzTa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/cubreBlue"
+            android:buttonTint="#60DAEF"
             android:checked="true"/>
 
         <RadioButton
             android:id="@+id/rbRoTa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/cubrePink"
+            android:buttonTint="#F79AFD"
             />
 
         <RadioButton
@@ -515,7 +432,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5">
+        app:layout_constraintTop_toBottomOf="@+id/tvInf">
 
         <TextView
             android:id="@+id/textView16"
@@ -528,14 +445,14 @@
             android:id="@+id/rbAzTi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:buttonTint="@color/cubreBlue"
-            android:checked="true"/>
+            android:buttonTint="#60DAEF"
+            android:checked="true" />
 
         <RadioButton
             android:id="@+id/rbRoTi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:buttonTint="@color/cubrePink" />
+            android:buttonTint="#F79AFD" />
 
 
     </RadioGroup>

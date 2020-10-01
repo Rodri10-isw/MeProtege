@@ -5,20 +5,28 @@ public class detalleCarr {
     private String producto;
     private String piezas;
     private String cantidad;
-    private String total;
+    private String subtotal;
     private String img;
     private String color;
     private String codigoP;
 
-    public detalleCarr(String producto, String piezas, String cantidad, String total,String img,String color,String num,String codigoP) {
+    public detalleCarr(String producto, String piezas, String cantidad, String subtotal,String img,String color,String num,String codigoP) {
         this.producto = producto;
         this.piezas = piezas;
         this.cantidad = cantidad;
-        this.total = total;
+        this.subtotal = subtotal;
         this.img = img;
         this.color=color;
         this.num=num;
         this.codigoP=codigoP;
+    }
+
+    public String getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(String subtotal) {
+        this.subtotal = subtotal;
     }
 
     public String getCodigoP() {
@@ -77,13 +85,6 @@ public class detalleCarr {
         this.cantidad = cantidad;
     }
 
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
-    }
     public detalleCarr(){
 
     }
